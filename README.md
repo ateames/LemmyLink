@@ -1,14 +1,13 @@
 # LemmyLink Bot
 
-LemmyLink is a cross-platform bridge bot that connects Reddit and Lemmy. When a user triggers the bot on Reddit by including the phrase **"LemmyLink!"** in a comment, the bot creates a corresponding post on your Lemmy instance and replies on Reddit with the link to that post.
+LemmyLink is a cross-platform bridge bot that connects Reddit and specific Lemmy communities. When a user triggers the bot on Reddit by including the phrase **"LemmyLink!"** in a comment, the bot creates a corresponding post on your Lemmy instance and replies on Reddit with the link to that post.
 
 ## Features
 
 - **Reddit Trigger:** Listens for the "LemmyLink!" phrase in Reddit comments.
 - **Lemmy Post Creation:** Automatically creates a corresponding post on a Lemmy instance.
-- **Bidirectional Comment Sync:** Synchronizes new comments between Reddit and Lemmy (for now, as top-level comments).
 - **Mapping Database:** Maintains SQLite-based mappings for both posts and comments to avoid duplicate syncing.
-- **Modular Architecture:** Organized code into separate modules for Reddit and Lemmy API interactions, mapping storage, and syncing logic.
+- **Bidirectional Comment Sync:** WORK IN PROGRESS: Synchronizes new comments between Reddit and Lemmy (for now, as top-level comments).
 
 ## Installation
 
