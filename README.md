@@ -16,7 +16,7 @@ LemmyLink is a cross-platform bridge bot that connects Reddit and specific Lemmy
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/lemmylink_bot.git
+   git clone https://github.com/ateames/LemmyLink.git
    cd lemmylink_bot
 
 2. **Install Dependencies:**
