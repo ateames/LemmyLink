@@ -33,6 +33,7 @@ Update the `config.py` file with your credentials and settings. For example:
     REDDIT_USERNAME = "YOUR_BOT_USERNAME"
     REDDIT_PASSWORD = "YOUR_BOT_PASSWORD"
     REDDIT_USER_AGENT = "LemmyLinkBot/0.1 by /u/YOUR_BOT_USERNAME"
+    SUBREDDIT_NAME = "YOUR_SUBREDDIT_NAME"
 
     # Lemmy credentials and instance settings
     LEMMY_BASE_URL = "https://your-lemmy-instance.example"
