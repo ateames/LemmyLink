@@ -39,9 +39,14 @@ def sync_reddit_to_lemmy_comments(reddit, lemmy):
 
             try:
                 # For MVP, post as a top-level comment on Lemmy.
+                content = (
+                    f"From Reddit user [/u/{comment.author}](https://reddit.com/user/{comment.author})"
+                    f"([Link to Reddit Comment](https://www.reddit.com{comment.permalink}))\n\n{comment.body}"
+                )
+
                 lemmy_response = lemmy.create_comment(
                     post_id=lemmy_post_id,
-                    content=comment.body,
+                    content=content,
                     parent_id=None  # Extend later to support nested replies.
                 )
                 # Extract Lemmy comment ID.
@@ -81,8 +86,8 @@ def sync_lemmy_to_reddit_comments(reddit, lemmy):
         print(f"Processing Lemmy post {lemmy_post_id}: Found {len(lemmy_comments)} comments.")
 
         for comment in lemmy_comments:
-            # Adjust here: assume each item is a dict with a nested "comment" dict.
-            comment_data = comment.get("comment", {})  # New: drill into the nested dict.
+            # Drill into the nested structure: assume each comment dict contains a "comment_view" key
+            comment_data = comment.get("comment_view", {}).get("comment", {})
             lemmy_comment_id = comment_data.get("id")
             if not lemmy_comment_id:
                 continue
@@ -91,7 +96,7 @@ def sync_lemmy_to_reddit_comments(reddit, lemmy):
                 continue
 
             try:
-                # Use the nested content key.
+                # Extract the content from the nested comment data.
                 content = comment_data.get("content", "")
                 reddit_comment = submission.reply(content)
                 insert_comment_mapping(reddit_comment.id, lemmy_comment_id)
